@@ -22,12 +22,12 @@ before_install:
  - popd
 
 install:
-  - pip install coveralls pep8
+  - pip install coveralls pycodestyle
 
 script:
   - while ! nc -z 127.0.0.1 10051; do sleep 1; done
-  - pep8 pyzabbix/
-  - pep8 tests/*.py
+  - pycodestyle pyzabbix/
+  - pycodestyle tests/*.py
   - coverage run setup.py test
 
 after_success:
@@ -35,4 +35,5 @@ after_success:
 
 notifications:
   email:
+    - alexey.dubkov@gmail.com
     - maksim77ster@gmail.com
